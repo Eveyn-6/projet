@@ -1,0 +1,79 @@
+  #logo {
+      margin-top: 20px;
+      margin-left: 20px;
+  }
+  
+  a {
+      color: black;
+  }
+  
+  a:hover {
+      color: purple;
+      font-size: 25px;
+  }
+  
+  #accueil {
+      font-size: 25px;
+  }
+  
+  #accueil:hover {
+      font-size: 30px;
+  }
+  
+  .alert {
+      text-align: center;
+  }
+  
+  h3 {
+      text-decoration: underline;
+      text-align: center;
+      text-decoration-color: rgb(51, 112, 153);
+      font-style: italic;
+      margin-top: 90px;
+  }
+  
+  input {
+      border-radius: 10px 0px;
+      margin-top: 15px;
+      margin-left: 20px;
+      margin-right: 20px;
+  }
+  
+  label {
+      font-size: 16px;
+      color: palevioletred;
+      text-align: center;
+  }
+  
+  body {
+      background-image: url(https://image.freepik.com/free-photo/abstract-multi-color-powder-explosion-white-background-painted-holi-festival_36326-2337.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+  }
+  
+  .connexionView {
+      display: flex;
+      justify-content: center;
+      border: solid rgba(218, 218, 218, 0.63);
+      border-color: rgba(15, 221, 240, 0.589) rgba(218, 34, 251, 0.63) rgba(137, 7, 170, 0.739) rgba(67, 70, 231, 0.377);
+      box-shadow: 2px 2px 2px 0px #0000002b, 4px 8px 9px 0px #0000002b;
+      margin: auto;
+      margin-top: 50px;
+      width: 100%;
+      min-width: 100px;
+      max-width: 400px;
+  }
+  
+  .inscriptionView {
+      display: flex;
+      justify-content: center;
+      border: solid rgba(218, 218, 218, 0.63);
+      border-color: rgba(218, 34, 251, 0.63) rgba(15, 221, 240, 0.589) rgba(67, 70, 231, 0.377) rgba(137, 7, 170, 0.739);
+      box-shadow: 3px 3px 3px 0px #0000002b, 4px 8px 9px 0px #0000002b;
+      background-color: rgba(255, 235, 205, 0.328);
+      margin: auto;
+      margin-top: 50px;
+      width: 100%;
+      min-width: 100px;
+      max-width: 500px
+  }
