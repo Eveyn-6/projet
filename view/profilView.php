@@ -1,4 +1,8 @@
 <?php ob_start(); ?>
+<h3>Profil</h3>
+<div class="alert">
+    <?= $message; ?>
+</div>
 
 <label class="welcome">Bienvenue: <?php echo $userinfo['pseudo']; ?></label></br>
 <div class="user_profil"><span>Pseudo: </span><?php echo $userinfo['pseudo']?></div>

@@ -9,27 +9,27 @@
 </head>
     <body>
     <header class="header">
- <a href=" .php"><img id="logo" src="public/images/logo4.png" alt="logo Eveyn photographie"</a>
+ <a href="index.php?action=home"><img id="logo" src="public/images/logo4.png" alt="logo Eveyn photographie"</a>
     <ul id="nav" class="nav justify-content-center">
     <li class="nav-item">
     
-          <a id="accueil" class="nav-link active" href="index.php?action=home"> <div id="accueil_link"> Accueil</div></a>
+          <a  class="nav-link active" href="index.php?action=home" id="accueil"> <div id="accueil_link"> Accueil</div></a>
         </li>  <li class="nav-item">
-          <a class="nav-link" href="index.php?action=profilView"><div id="color">Profil</div></a>
+          <a class="nav-link" href="index.php?action=profil"><div id="navbar">Profil</div></a>
         </li>      
         <li class="nav-item">
-          <a class="nav-link" href="urbex.php"><div id="color">Albums</div></a>
+          <a class="nav-link" href="index.php?action=album"><div id="navbar">Albums</div></a>
         </li>
                
           <li class="nav-item">
-          <a class="nav-link" href="index.php?action=inscription"><div id="color">Inscription</div></a>
+          <a class="nav-link" href="index.php?action=inscription"><div id="navbar">Inscription</div></a>
           </li> 
         </li>
           <li class="nav-item">
-          <a class="nav-link" href="index.php?action=connexion"><div id="color">Connexion</div></a>
+          <a class="nav-link" href="index.php?action=connexion"><div id="navbar">Connexion</div></a>
         </li>    
         <li class="nav-item">
-          <a class="nav-link" href=index.php?action=deconnexion" "><div id="color">Déconnexion</div></a>
+          <a class="nav-link" href="index.php?action=deconnexion"><div id="color">Déconnexion</div></a>
         </li>
       </ul>
  </header>

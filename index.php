@@ -8,8 +8,14 @@ if(isset($_GET["action"])){
 }
 
 switch($action){
+
     case "home":
-        //...
+        home();
+    break;
+    case "album":
+        album();
+    break;
+       
     break;
     case "connexion":
         connexionController();
@@ -17,5 +23,13 @@ switch($action){
     case "inscription":
         inscriptionController();
     break;
-    //...
+  
+    case "profil":
+       profilController();
+    break;
+    
+    case "deconnexion":
+        deconnexion();
+     break;
+     
 }

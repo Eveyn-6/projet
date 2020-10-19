@@ -1,6 +1,12 @@
   #logo {
       margin-top: 20px;
+      margin-bottom: 20px;
       margin-left: 20px;
+  }
+  
+  #nav {
+      border: solid 2px;
+      border-color: rgba(15, 221, 240, 0.589) rgba(218, 34, 251, 0.63) rgba(137, 7, 170, 0.739) rgba(67, 70, 231, 0.377);
   }
   
   a {
@@ -41,7 +47,7 @@
   
   label {
       font-size: 16px;
-      color: palevioletred;
+      color: rgb(173, 49, 91);
       text-align: center;
   }
   
@@ -49,6 +55,36 @@
       background-image: url(https://image.freepik.com/free-photo/abstract-multi-color-powder-explosion-white-background-painted-holi-festival_36326-2337.jpg);
       background-size: cover;
       background-repeat: no-repeat;
+  }
+  
+  button {
+      background-color: #a2e6d0;
+      background-image: linear-gradient(315deg, #a2e6d0 23%, #d6da7a 39%, #e5ff47 55%, #ea55ff 86%);
+      border-radius: 10px 0px 10px 0px;
+      border-color: rgba(15, 221, 240, 0.589) rgba(218, 34, 251, 0.63) rgba(137, 7, 170, 0.739) rgba(67, 70, 231, 0.377);
+  }
+  
+  .card-groups,
+  .card-deck {
+      margin-top: 50px;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+  }
+  
+  .card {
+      width: 100%;
+      min-width: 100px;
+      max-width: 300px;
+      margin: 0 30px;
+      margin-top: 25px;
+      background: transparent;
+      border: none;
+      border-radius: calc(.25rem - 1px);
+      border-color: rgba(17, 65, 143, 0.486) rgba(150, 15, 240, 0.589) rgba(162, 9, 250, 0.377) rgba(32, 123, 226, 0.561);
+      box-shadow: 2px 2px 2px 0px #0000002b, 4px 8px 9px 0px #0000002b;
+      border: 4px solid white;
   }
   
   .connexionView {
@@ -76,4 +112,24 @@
       width: 100%;
       min-width: 100px;
       max-width: 500px
+  }
+  
+  .welcome {
+      text-decoration: underline;
+      font-size: 35px;
+      margin-bottom: 50px;
+      margin-left: 100px;
+  }
+  
+  .user_profil {
+      font-size: 25px;
+      margin-bottom: 10px;
+      margin-left: 20px;
+  }
+  
+  span {
+      text-decoration: underline;
+      font-size: 22px;
+      color: #9d24be;
+      margin-left: 20px;
   }

@@ -18,6 +18,16 @@ function albums()
     $connexion = getUser();
 }
 
+function home()
+{
+   
+    require_once('view/homeView.php');
+}
+function album()
+{
+   
+    require_once('view/albumView.php');
+}
 function connexionController(){
     $message = "Remplissez les champs:";
     $title = "Page de connexion | Connexion";
@@ -25,10 +35,10 @@ function connexionController(){
      
     if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-        if ($_SERVER["REQUEST_METHOD"] === "POST" and isset($_POST['pseudoconnect'])) {
-            $pseudo = ($_POST['pseudoconnect']);
+        if ($_SERVER["REQUEST_METHOD"] === "POST" and isset($_POST['pseudo'])) {
+            $pseudo = ($_POST['pseudo']);
             $bdd = new PDO('mysql:host=localhost;dbname=pictures', 'root', '');
-            $insert = $bdd->prepare('SELECT id, password FROM membres WHERE pseudo = :pseudo');
+            $insert = $bdd->prepare('SELECT id, password FROM user WHERE pseudo = :pseudo');
             $insert->execute(array(
                 'pseudo' => $pseudo
             ));
@@ -42,7 +52,7 @@ function connexionController(){
                     session_start();
                     $_SESSION['id'] = $connexion['id'];
                     $_SESSION['pseudo'] = $pseudo;
-                    header("Location: espace_membres/profilView.php");
+                    header("Location: index.php?action=profil");
                 } else {
                     echo 'Identifiants ou MDP incorrect !';
                 }
@@ -89,7 +99,7 @@ function inscriptionController(){
                         'password' => $password,
                         'email' => $email,
                     ));
-                    header("Location:index.php?action=home");
+                    header("Location:index.php?action=connexion");
                 } else {
                     $erreur = "vos mots de passe ne sont pas identiques";
                 }  
@@ -100,15 +110,17 @@ function inscriptionController(){
             }
         
             } else {
-                echo "Remplissez les champs pour vous inscrire";
+              
             }
         }
-        require_once("view/inscriptionView.php");
-    }
-    
- function profil(){
+       
+    } 
+    require_once("view/inscriptionView.php");
+}
+ function profilController(){
     $message = "";
-    $title = "Profil' | profil";
+    $title = "profil' | profil";
+    $userinfo =[];
     session_start();
     $bdd = new PDO('mysql:host=localhost;dbname=pictures', 'root', '');
     if(isset($_SESSION) && isset($_SESSION['id']))
@@ -117,9 +129,22 @@ function inscriptionController(){
         $requser = $bdd -> prepare('SELECT * FROM user WHERE id = ?') ;
         $requser -> execute(array($getid));
         $userinfo = $requser->fetch();
-        header("Location: view/profilView.php");
+     
     
  }
+ else{
+    header("Location:index.php?action=connexion");
+    die();
+}
     require_once("view/profilView.php");
 }
+
+
+function deconnexion(){
+session_start();
+session_unset();
+session_destroy();
+header('Location: index.php');
+exit();
+require_once("view/profilView.php");
 }

@@ -1,21 +1,19 @@
 <?php ob_start(); ?>
 
-
-
 <h3>Connexion</h3>
 <div class="alert">
     <?= $message; ?>
 </div>
 <div class="connexionView"> 
-<form>
+<form method="post">
     <table> 
         <tr> 
             <td><label>Pseudo:</label></td>
-            <td><input type="text" placeholder="Pseudo"> </td>
+            <td><input type="text" placeholder="Pseudo" name="pseudo"> </td>
         </tr>
         <tr> 
             <td><label>Mot de passe:</label></td>
-            <td><input type="password" placeholder="Mot de passe"> </td>
+            <td><input type="password" placeholder="Mot de passe" name="password"> </td>
         </tr> 
         <tr>
             <td>
