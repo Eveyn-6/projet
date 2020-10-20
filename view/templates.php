@@ -9,7 +9,7 @@
 </head>
     <body>
     <header class="header">
- <a href="index.php?action=home"><img id="logo" src="public/images/logo4.png" alt="logo Eveyn photographie"</a>
+ <a href="index.php?action=home"><img id="logo" src="public/images/logo7.png" alt="logo Eveyn photographie"</a>
     <ul id="nav" class="nav justify-content-center">
     <li class="nav-item">
     
@@ -45,7 +45,7 @@
     integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
     crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery.js"></script>
-<script src="javascript/javascriptpro.js"></script>
+<script src="public/js/javascript.js"></script>
  
     </body>
 </html>

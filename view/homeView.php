@@ -1,18 +1,19 @@
-<?php ob_start(); ?>
-<h4>Bienvenue sur Eveyn Photographie</h4>
-<?php
-$bdd = new PDO('mysql:host=localhost;dbname=pictures', 'root', '');
-if (isset($_POST['upload'])) {
-    $image = $_FILES['image']['name'];
-    $insert = $bdd->query("INSERT INTO slider (image_path) VALUES ('$path')");
-    if($insert){
-        move_uploaded_file($_FILES['image']['tmp_name'], $path);
-        $message ='image chargée avec succès';
-
-}
-else{
-    $message='échec du chargement de l\image';
-}
-}
+<?php ob_start(); ?> 
+<h3>Bienvenue sur Eveyn Photographie</h3>
+<div class="carousel_container"> 
+<div class="container">
+  <div class="carousel">
+    <div class="item" id="a"><img src="public/images/urbex/urbex_factory.jpg" class="d-block w-100" alt="urbex_factory" ></div>
+    <div class="item" id="b"><img src="public/images/nature/sunset.jpg" class="d-block w-100" alt="nature_sunset" ></div>
+    <div class="item" id="c"><img src="public/images/urbex/urbex_sunset_wall1.jpg" class="d-block w-100" alt="urbex_sunset_wall"id="carousel"></div>
+    <div class="item" id="d"><img src="public/images/nature/arbre.jpg" class="d-block w-100" alt="nature_arbre"id="carousel"></div>
+    <div class="item" id="e"><img src="public/images/urbex/urbexAccueil.jpg" class="d-block w-100" alt="urbexAccueil"id="carousel"></div>
+    <div class="item" id="f"><img src="public/images/nature/buterfly.jpg" class="d-block w-100" alt="nature_butterfly"id="carousel"></div>
+  </div>
+</div>
+<div class="next">></div>
+<div class="prev"><</div>
+ </div>
+<?php 
 $content = ob_get_clean();
-require_once("view/templates.php");
+ require_once("view/templates.php");
