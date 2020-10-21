@@ -1,19 +1,27 @@
 <?php ob_start(); ?> 
 <h3>Bienvenue sur Eveyn Photographie</h3>
-<div class="carousel_container"> 
-<div class="container">
-  <div class="carousel">
-    <div class="item" id="a"><img src="public/images/urbex/urbex_factory.jpg" class="d-block w-100" alt="urbex_factory" ></div>
-    <div class="item" id="b"><img src="public/images/nature/sunset.jpg" class="d-block w-100" alt="nature_sunset" ></div>
-    <div class="item" id="c"><img src="public/images/urbex/urbex_sunset_wall1.jpg" class="d-block w-100" alt="urbex_sunset_wall"id="carousel"></div>
-    <div class="item" id="d"><img src="public/images/nature/arbre.jpg" class="d-block w-100" alt="nature_arbre"id="carousel"></div>
-    <div class="item" id="e"><img src="public/images/urbex/urbexAccueil.jpg" class="d-block w-100" alt="urbexAccueil"id="carousel"></div>
-    <div class="item" id="f"><img src="public/images/nature/Nature.jpg" class="d-block w-100" alt="nature_city"id="carousel"></div>
+ 
+ <div class="sunset">
+   <a href="index.php?action=album"><img src="public/images/cars/orange_cars.jpg"></a>
+ </div>
+
+<div class="carousel">
+  <div class="holder">
+    <img src="public/images/urbex/urbex_factory.jpg" alt="urbex factory" />
+    <img src="public/images/nature/sunset.jpg" alt="sunset" />
+    <img src="public/images/urbex/urbex_sunset_wall1.jpg" alt="urbex sunset wall1" />
+    <img src="public/images/nature/cat.jpg" alt="cat" />
+    <img src="public/images/urbex/urbexAccueil.jpg" alt="urbexAccueil" />
+    <img src="public/images/nature/Nature.jpg" alt="Nature" />
+    <img src="public/images/urbex/urbex_portal.jpg" alt="urbex portal" />
+    <img src="public/images/nature/arbre.jpg" alt="arbre" />
+     
   </div>
 </div>
-<div class="next">></div>
-<div class="prev"><</div>
- </div>
+   
+  
+  
+    
 <?php 
 $content = ob_get_clean();
  require_once("view/templates.php");
