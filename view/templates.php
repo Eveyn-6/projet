@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="public/css/style.css">
 </head>
     <body>
+      <div class="wrapper"> 
+      <div class="left"><a href="index.php?action=home"><img id="logo_left" src="public/images/logo7.png" alt="logo Eveyn photographie"/></a> </div>
+      <div class="content"> 
     <header class="header">
- <a href="index.php?action=home"><img id="logo" src="public/images/logo7.png" alt="logo Eveyn photographie"</a>
-    <ul id="nav" class="nav justify-content-center">
+ <a href="index.php?action=home"><img id="logo_content" src="public/images/logo7.png" alt="logo Eveyn photographie"/></a> 
+  <ul id="nav" class="nav justify-content-center">
     <li class="nav-item">
-    
           <a  class="nav-link active" href="index.php?action=home" id="accueil"> <div id="accueil_link"> Accueil</div></a>
         </li>  <li class="nav-item">
           <a class="nav-link" href="index.php?action=profil"><div id="navbar">Profil</div></a>
@@ -34,7 +36,10 @@
       </ul>
  </header>
         <?= $content ?>
-        
+        </div>
+        </div>
+     <div class="footer">
+     </div>   
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
     crossorigin="anonymous"></script>

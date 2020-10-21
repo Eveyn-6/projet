@@ -4,6 +4,10 @@
     margin-left: 40px;
 }
 
+.nav {
+    margin-top: 50px;
+}
+
 a {
     color: black;
 }
@@ -25,7 +29,7 @@ h3 {
     text-align: center;
     text-decoration-color: rgb(182, 131, 37);
     font-style: italic;
-    margin-top: 90px;
+    margin-top: 60px;
     padding: 20px;
 }
 
@@ -82,7 +86,7 @@ span {
     min-width: 100px;
     max-width: 200px;
     margin: 0 30px;
-    margin-top: 25px;
+    margin-top: 155px;
     background: transparent;
     border: none;
     border-radius: calc(.25rem - 1px);
@@ -113,11 +117,12 @@ form {
     position: relative;
     perspective: 1000px;
     margin-top: 200px;
+    margin-bottom: 20px;
+    margin-left: 100px;
 }
 
 .carousel {
     height: 100%;
-    width: 200%;
     position: absolute;
     transform-style: preserve-3d;
     transition: transform 1s;
@@ -170,9 +175,94 @@ form {
 }
 
 .next {
-    right: 420px;
+    right: 0px;
 }
 
 .prev {
-    left: 540px;
+    left: 0px;
+}
+
+body {
+    background-color: #efefef;
+    margin: 0;
+}
+
+.left {
+    background-image: url('https://github.com/Eveyn-6/projet/raw/master/public/images/bgl.jpg');
+    width: 100px;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.footer {
+    background-image: url('https://github.com/Eveyn-6/projet/raw/master/public/images/bgf.jpg');
+    background-repeat: no-repeat;
+    height: 472px;
+}
+
+#logo_left {
+    margin-left: 54px;
+    margin-top: 50px;
+    width: 200px;
+    display: none;
+}
+
+#logo_content {
+    margin: auto;
+    margin-left: 100px;
+    width: 200px;
+}
+
+@media (min-width: 576px) {
+    .left {
+        width: 130px;
+    }
+    #logo_content {
+        margin-left: 10px;
+    }
+}
+
+@media (min-width: 768px) {
+    .left {
+        width: 230px;
+    }
+    #logo_content {
+        margin-left: 10px;
+    }
+}
+
+@media (min-width: 992px) {
+    .left {
+        width: 430px;
+    }
+    #logo_left {
+        display: block;
+    }
+    #logo_content {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .left {
+        width: 410px;
+    }
+}
+
+.footer {
+    background-image: url('https://eveyn-6.github.io/projet/public/images/bgf.jpg');
+}
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+    min-height: calc(100vh - 472px);
+}
+
+.content {
+    background-color: #efefef;
+    flex-shrink: 1;
+    flex-grow: 1;
+    padding: 12px;
+    overflow: hidden;
 }
