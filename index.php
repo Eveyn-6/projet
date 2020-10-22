@@ -12,14 +12,23 @@ switch($action){
     case "home":
         home();
     break;
+
     case "album":
         album();
     break;
-       
+
+    case "urbex":
+        urbex();
     break;
+
+    case "cars":
+        cars();
+    break;
+
     case "connexion":
         connexionController();
     break;
+    
     case "inscription":
         inscriptionController();
     break;

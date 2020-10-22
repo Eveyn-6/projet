@@ -4,24 +4,21 @@
 <div class="alert">
     <?= $message; ?>
 </div>
-<div class="connexionView"> 
-<form method="post">
-    <table> 
-        <tr> 
-            <td><label>Pseudo:</label></td>
-            <td><input type="text" placeholder="Pseudo" name="pseudo"> </td>
-        </tr>
-        <tr> 
-            <td><label>Mot de passe:</label></td>
-            <td><input type="password" placeholder="Mot de passe" name="password"> </td>
-        </tr> 
-        <tr>
-            <td>
+<div class="connexionView">
+    <form method="post">
+
+        <div class="input_group">
+            <label>Pseudo:</label> 
+            <input type="text" placeholder="Pseudo" name="pseudo">
+        </div>
+        <div class="input_group">
+            <label>Mot de passe:</label>
+            <input type="password" placeholder="Mot de passe" name="password">
+        </div>
+        <div class="input_group">
             <div class="btn"><button type="submit">Connexion</button></div>
-        </tr>
-    </td>
-    </table> 
-</form>
+        </div>
+    </form>
 </div>
 <?php
 $content = ob_get_clean();

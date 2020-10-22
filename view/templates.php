@@ -51,7 +51,6 @@
     crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="public/js/javascript.js"></script>
- 
     </body>
 </html>
  

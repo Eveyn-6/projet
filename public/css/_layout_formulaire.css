@@ -1,0 +1,8 @@
+form {
+    border: solid;
+    background-color: rgba(32, 32, 32, 0.191);
+    margin: auto;
+    width: 100%;
+    min-width: 100px;
+    max-width: 500px;
+}

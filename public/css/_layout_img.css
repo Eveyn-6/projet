@@ -1,0 +1,17 @@
+.urbex img {
+    width: 100%;
+    min-width: 100px;
+    max-width: 300px;
+    margin-top: 30px;
+    margin-right: 30px;
+    box-shadow: 2px 2px 2px 0px #ac1dff50, 14px 15px 12px 0px#681e8649;
+}
+
+.sunset img {
+    display: flex;
+    margin: auto;
+    margin-top: 40px;
+    width: 450px;
+    border-radius: 0px 0px 20px 10px;
+    box-shadow: 2px 2px 2px 0px #ffe51d78, 14px 15px 12px 0px#f09a2a91;
+}

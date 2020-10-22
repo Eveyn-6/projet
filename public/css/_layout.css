@@ -1,84 +1,105 @@
-body {
-    background-color: #efefef;
-    margin: 0;
-}
-
-#logo_left {
-    margin-left: 54px;
-    margin-top: 50px;
-    width: 200px;
-    display: none;
-}
-
-#logo_content {
-    margin: auto;
-    margin-left: 100px;
-    width: 200px;
-}
-
-.left {
-    background-image: url('https://github.com/Eveyn-6/projet/raw/master/public/images/bgl.jpg');
-    width: 100px;
-    flex-shrink: 0;
-    flex-grow: 0;
-}
-
-.footer {
-    background-image: url('https://github.com/Eveyn-6/projet/raw/master/public/images/bgf.jpg');
-    background-repeat: no-repeat;
-    height: 472px;
-}
-
-.footer {
-    background-image: url('https://eveyn-6.github.io/projet/public/images/bgf.jpg');
-}
-
-.wrapper {
-    display: flex;
-    align-items: stretch;
-    min-height: calc(100vh - 472px);
-}
-
-.content {
-    background-color: #efefef;
-    flex-shrink: 1;
-    flex-grow: 1;
-    padding: 12px;
-    overflow: hidden;
-}
-
-@media (min-width: 576px) {
-    .left {
-        width: 130px;
-    }
-    #logo_content {
-        margin-left: 10px;
-    }
-}
-
-@media (min-width: 768px) {
-    .left {
-        width: 230px;
-    }
-    #logo_content {
-        margin-left: 10px;
-    }
-}
-
-@media (min-width: 992px) {
-    .left {
-        width: 430px;
-    }
-    #logo_left {
-        display: block;
-    }
-    #logo_content {
-        display: none;
-    }
-}
-
-@media (min-width: 1200px) {
-    .left {
-        width: 410px;
-    }
-}
+        body {
+            background-color: #efefef;
+            margin: 0;
+        }
+        
+        #logo {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 40px;
+        }
+        
+        #logo_left {
+            margin-left: 54px;
+            margin-top: 50px;
+            width: 200px;
+            display: none;
+        }
+        
+        #logo_content {
+            margin: auto;
+            margin-left: 100px;
+            width: 200px;
+        }
+        
+        .left {
+            background-image: url('https://github.com/Eveyn-6/projet/raw/master/public/images/bgl.jpg');
+            width: 100px;
+            flex-shrink: 0;
+            flex-grow: 0;
+        }
+        
+        .footer {
+            background-image: url('https://github.com/Eveyn-6/projet/raw/master/public/images/bgf.jpg');
+            background-repeat: no-repeat;
+            height: 472px;
+        }
+        
+        .footer {
+            background-image: url('https://eveyn-6.github.io/projet/public/images/bgf.jpg');
+        }
+        
+        .wrapper {
+            display: flex;
+            align-items: stretch;
+            min-height: calc(100vh - 472px);
+        }
+        
+        .content {
+            background-color: #efefef;
+            flex-shrink: 1;
+            flex-grow: 1;
+            padding: 12px;
+            overflow: hidden;
+        }
+        
+        .input_group {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        @media (min-width: 576px) {
+            .left {
+                width: 130px;
+            }
+            #logo_content {
+                margin-left: 10px;
+            }
+            .input_group {
+                display: flex;
+                justify-content: column;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .left {
+                width: 230px;
+            }
+            #logo_content {
+                margin-left: 10px;
+            }
+            .input_group {
+                display: flex;
+                justify-content: column;
+            }
+            @media (min-width: 992px) {
+                .left {
+                    width: 430px;
+                }
+                #logo_left {
+                    display: block;
+                }
+                #logo_content {
+                    display: none;
+                }
+                .input_group {
+                    display: flex;
+                    justify-content: column;
+                }
+            }
+            @media (min-width: 1200px) {
+                .left {
+                    width: 410px;
+                }
+            }
+        }

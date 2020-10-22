@@ -28,6 +28,18 @@ function album()
    
     require_once('view/albumView.php');
 }
+function urbex()
+{
+   
+    require_once('view/urbexView.php');
+    $title =" Urbex| Urbex";
+}
+function cars()
+{
+   
+    require_once('view/carsView.php');
+    $title =" Cars| Auto";
+}
 function connexionController(){
     $message = "Remplissez les champs:";
     $title = "Page de connexion | Connexion";
