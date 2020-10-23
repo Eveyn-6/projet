@@ -30,13 +30,9 @@
         }
         
         .footer {
-            background-image: url('https://github.com/Eveyn-6/projet/raw/master/public/images/bgf.jpg');
+            background-image: url('https://github.com/Eveyn-6/projet/raw/master/public/images/wallp.jpg');
             background-repeat: no-repeat;
             height: 472px;
-        }
-        
-        .footer {
-            background-image: url('https://eveyn-6.github.io/projet/public/images/bgf.jpg');
         }
         
         .wrapper {
@@ -56,6 +52,7 @@
         .input_group {
             display: flex;
             justify-content: space-between;
+            flex-direction: column;
         }
         
         @media (min-width: 576px) {
@@ -67,7 +64,7 @@
             }
             .input_group {
                 display: flex;
-                justify-content: column;
+                flex-direction: row;
             }
         }
         
@@ -78,28 +75,22 @@
             #logo_content {
                 margin-left: 10px;
             }
-            .input_group {
-                display: flex;
-                justify-content: column;
+        }
+        
+        @media (min-width: 992px) {
+            .left {
+                width: 430px;
             }
-            @media (min-width: 992px) {
-                .left {
-                    width: 430px;
-                }
-                #logo_left {
-                    display: block;
-                }
-                #logo_content {
-                    display: none;
-                }
-                .input_group {
-                    display: flex;
-                    justify-content: column;
-                }
+            #logo_left {
+                display: block;
             }
-            @media (min-width: 1200px) {
-                .left {
-                    width: 410px;
-                }
+            #logo_content {
+                display: none;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .left {
+                width: 410px;
             }
         }
