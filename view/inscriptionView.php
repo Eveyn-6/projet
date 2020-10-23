@@ -24,11 +24,11 @@
         </div>
         <div class="input_group">
             <label>Confirmation du mot de passe:</label>
-            <input type="password" placeholder="Mot de passe confirmation" name="password2"> 
+            <input type="password" placeholder="Mot de passe confirmation" name="password2">
         </div>
         <div class="input_group">
             <div class="btn"><button type="submit" name="inscriptionView">Envoyer le fomrulaire</button></div>
-
+        </div>
 
     </form>
 </div>

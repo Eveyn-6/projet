@@ -1,15 +1,16 @@
-<?php ob_start(); ?> 
+<?php ob_start(); ?>
 
 <div class="nature">
-     <div class="img_nature_left">
-         <img src="public/images/nature/.jpg" alt="">
-         <img src="public/images/nature/.jpg" alt="">
-         <img src="public/images/nature/.jpg" alt="">
-         <img src="public/images/nature/.jpg" alt="">
-         <img src="public/images/nature/.jpg" alt="">
-         <img src="public/images/nature/.jpg" alt="">
-        
-     </div>
- <?php 
+    <div class="img_nature_left">
+        <img src="public/images/nature/foret.jpg" alt="">
+        <img src="public/images/nature/ciel.jpg" alt="">
+        <img src="public/images/nature/arbre.jpg" alt="">
+        <img src="public/images/nature/.jpg" alt="">
+        <img src="public/images/nature/.jpg" alt="">
+        <img src="public/images/nature/.jpg" alt="">
+
+    </div>
+</div>
+<?php
 $content = ob_get_clean();
- require_once("view/templates.php");
+require_once("view/templates.php");
