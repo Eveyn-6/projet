@@ -24,6 +24,9 @@ switch($action){
     case "cars":
         cars();
     break;
+    case "nature":
+        nature();
+    break;
 
     case "connexion":
         connexionController();

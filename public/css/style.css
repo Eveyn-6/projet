@@ -17,12 +17,12 @@
 }
 
 .welcome {
+    margin-top: 40px;
+    margin-left: 20px;
     color: black;
     text-decoration: underline;
     text-decoration-color: rgb(182, 131, 37);
     font-size: 30px;
-    margin-top: 40px;
-    margin-left: 20px;
 }
 
 .alert {
@@ -30,9 +30,9 @@
 }
 
 .user_profil {
-    font-size: 25px;
     margin-bottom: 10px;
     margin-left: 20px;
+    font-size: 25px;
 }
 
 .cars img {
@@ -50,23 +50,22 @@ a {
 
 a:hover {
     color: rgba(226, 171, 20, 0.842);
-    text-decoration: underline;
 }
 
 h3 {
-    text-decoration: underline;
-    text-align: center;
-    text-decoration-color: rgb(182, 131, 37);
-    font-style: italic;
     margin-top: 40px;
     padding: 20px;
+    text-align: center;
+    font-style: italic;
+    text-decoration: underline;
+    text-decoration-color: rgb(182, 131, 37);
 }
 
 label {
+    margin-top: 10px;
+    text-align: center;
     font-size: 16px;
     color: rgb(112, 79, 18);
-    text-align: center;
-    margin-top: 10px;
 }
 
 button {

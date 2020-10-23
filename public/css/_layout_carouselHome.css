@@ -5,28 +5,28 @@
 }
 
 .carousel {
+    margin: 0 auto;
+    margin-top: 60px;
+    padding: 8px;
+    padding-bottom: 40px;
     width: 830px;
     height: 120px;
     overflow: hidden;
-    padding: 8px;
     box-sizing: border-box;
     border: 2px solid #999;
     border-radius: 5px;
     box-shadow: 0 0 4px #000;
-    margin: 0 auto;
-    margin-top: 60px;
-    padding-bottom: 40px;
 }
 
 .container {
     margin: 0 auto;
+    margin-top: 200px;
+    margin-bottom: 20px;
+    margin-left: 100px;
     width: 100px;
     height: 100px;
     position: relative;
     perspective: 1000px;
-    margin-top: 200px;
-    margin-bottom: 20px;
-    margin-left: 100px;
 }
 
 .holder {

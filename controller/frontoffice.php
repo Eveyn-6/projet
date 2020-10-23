@@ -40,6 +40,12 @@ function cars()
     require_once('view/carsView.php');
     $title =" Cars| Auto";
 }
+function nature()
+{
+   
+    require_once('view/naureView.php');
+    $title =" Nature| Nature";
+}
 function connexionController(){
     $message = "Remplissez les champs:";
     $title = "Page de connexion | Connexion";
