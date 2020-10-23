@@ -43,7 +43,7 @@ function cars()
 function nature()
 {
    
-    require_once('view/naureView.php');
+    require_once('view/natureView.php');
     $title =" Nature| Nature";
 }
 function connexionController(){
