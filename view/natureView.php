@@ -1,13 +1,13 @@
 <?php ob_start(); ?>
 
-<div class="nature">
+<div class="galery">
     <div class="img_nature_left">
-        <img src="public/images/nature/foret.jpg" alt="">
-        <img src="public/images/nature/ciel.jpg" alt="">
-        <img src="public/images/nature/arbre.jpg" alt="">
-        <img src="public/images/nature/.jpg" alt="">
-        <img src="public/images/nature/.jpg" alt="">
-        <img src="public/images/nature/.jpg" alt="">
+        <img class="nature" src="public/images/nature/foret.jpg" alt="">
+        <img class="nature"src="public/images/nature/ciel.jpg" alt="">
+        <img class="nature"src="public/images/nature/loire.jpg" alt="">
+        <img class="nature"src="public/images/nature/.jpg" alt="">
+        <img class="nature"src="public/images/nature/.jpg" alt="">
+        <img class="nature"src="public/images/nature/.jpg" alt="">
 
     </div>
 </div>

@@ -1,10 +1,9 @@
-.urbex img {
+.galery img {
     width: 100%;
     min-width: 100px;
     max-width: 300px;
     margin-top: 30px;
     margin-right: 30px;
-    box-shadow: 2px 2px 2px 0px #ac1dff50, 14px 15px 12px 0px#681e8649;
 }
 
 .sunset img {
@@ -14,4 +13,16 @@
     width: 450px;
     border-radius: 0px 0px 20px 10px;
     box-shadow: 2px 2px 2px 0px #ffe51d78, 14px 15px 12px 0px#f09a2a91;
+}
+
+.nature {
+    box-shadow: 2px 2px 2px 0px #b7ff1d50, 14px 15px 12px 0px#f3db068a;
+}
+
+.urbex {
+    box-shadow: 2px 2px 2px 0px #26272550, 14px 15px 12px 0px#351dc08a;
+}
+
+.cars {
+    box-shadow: 2px 2px 2px 0px #0b7feb3f, 14px 15px 12px 0px#05ebcc42;
 }

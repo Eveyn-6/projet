@@ -1,5 +1,6 @@
 <?php
 require_once('model/db.php');
+require_once('model/helpers.php');
 
 function user()
 {
@@ -46,6 +47,11 @@ function nature()
     require_once('view/natureView.php');
     $title =" Nature| Nature";
 }
+function adminController()
+{ 
+
+}
+ 
 function connexionController(){
     $message = "Remplissez les champs:";
     $title = "Page de connexion | Connexion";
@@ -165,4 +171,5 @@ session_destroy();
 header('Location: index.php');
 exit();
 require_once("view/profilView.php");
+ 
 }

@@ -27,7 +27,9 @@ switch($action){
     case "nature":
         nature();
     break;
-
+    case "admin":
+        adminController();
+    break;
     case "connexion":
         connexionController();
     break;
@@ -39,7 +41,7 @@ switch($action){
     case "profil":
        profilController();
     break;
-    
+     
     case "deconnexion":
         deconnexion();
      break;

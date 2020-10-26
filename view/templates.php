@@ -16,26 +16,37 @@
   <ul id="nav" class="nav justify-content-center">
     <li class="nav-item">
           <a  class="nav-link active" href="index.php?action=home" id="accueil"> <div id="accueil_link"> Accueil</div></a>
-        </li>  <li class="nav-item">
-          <a class="nav-link" href="index.php?action=profil"><div id="navbar">Profil</div></a>
-        </li>      
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="index.php?action=admin"><div id="navbar">Espace admin</div></a>
+        </li>       
+        <?php
+          if(!isUserConnected())
+          {
+            ?>            
         <li class="nav-item">
           <a class="nav-link" href="index.php?action=album"><div id="navbar">Albums</div></a>
-        </li>
-               
-          <li class="nav-item">
-          <a class="nav-link" href="index.php?action=inscription"><div id="navbar">Inscription</div></a>
-          </li> 
+        </li>  
+         <li class="nav-item">
+          <a class="nav-link" href="index.php?action=profil"><div id="navbar">Profil</div></a>
+        </li>    
+        
         </li>
           <li class="nav-item">
           <a class="nav-link" href="index.php?action=connexion"><div id="navbar">Connexion</div></a>
         </li>    
         <li class="nav-item">
           <a class="nav-link" href="index.php?action=deconnexion"><div id="color">Déconnexion</div></a>
-        </li>
+        </li>   
+          <?php
+          }
+        ?>
+         <li class="nav-item">
+          <a class="nav-link" href="index.php?action=inscription"><div id="navbar">Inscription</div></a>
+          </li> 
       </ul>
  </header>
-        <?= $content ?>
+        <?php echo $content ?>
         </div>
         </div>
      <div class="footer">
