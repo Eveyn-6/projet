@@ -49,9 +49,18 @@ function nature()
 }
 function adminController()
 { 
+     
+   
+    if(!isUserConnected()){
+        // Si non connecté, redirection
+        header("Location:index.php?action=connexion");
+        die();
+    }
+
+    // Si connecté...
 
 }
- 
+
 function connexionController(){
     $message = "Remplissez les champs:";
     $title = "Page de connexion | Connexion";
@@ -61,7 +70,7 @@ function connexionController(){
 
         if ($_SERVER["REQUEST_METHOD"] === "POST" and isset($_POST['pseudo'])) {
             $pseudo = ($_POST['pseudo']);
-            $bdd = new PDO('mysql:host=localhost;dbname=pictures', 'root', '');
+            $bdd = dbConnect();
             $insert = $bdd->prepare('SELECT id, password FROM user WHERE pseudo = :pseudo');
             $insert->execute(array(
                 'pseudo' => $pseudo
@@ -145,7 +154,7 @@ function inscriptionController(){
     $message = "";
     $title = "profil' | profil";
     $userinfo =[];
-    session_start();
+     
     $bdd = new PDO('mysql:host=localhost;dbname=pictures', 'root', '');
     if(isset($_SESSION) && isset($_SESSION['id']))
     {

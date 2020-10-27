@@ -13,7 +13,7 @@
     height: 120px;
     overflow: hidden;
     box-sizing: border-box;
-    border: 2px solid #999;
+    border: 2px solid rgb(207, 204, 204);
     border-radius: 5px;
     box-shadow: 0 0 4px #000;
 }

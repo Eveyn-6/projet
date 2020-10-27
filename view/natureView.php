@@ -1,5 +1,6 @@
 <?php ob_start(); ?>
-
+ 
+<a href="index.php?action=album"><img class="return" src="public/images/return.png" alt=""></a>
 <div class="galery">
     <div class="img_nature_left">
         <img class="nature" src="public/images/nature/foret.jpg" alt="">

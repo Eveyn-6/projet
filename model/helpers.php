@@ -1,4 +1,4 @@
 <?php
 function isUserConnected(){
-    return false;
+    return isset($_SESSION['id']);
 }

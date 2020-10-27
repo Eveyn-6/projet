@@ -1,12 +1,11 @@
 <?php
 
 require_once("controller/frontoffice.php");
-
+session_start();
 $action = "home";
 if(isset($_GET["action"])){
     $action = $_GET["action"];
 }
-
 switch($action){
 
     case "home":
@@ -47,3 +46,5 @@ switch($action){
      break;
      
 }
+
+ 

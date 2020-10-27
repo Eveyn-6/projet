@@ -1,5 +1,5 @@
 <?php ob_start(); ?> 
- 
+<a href="index.php?action=album"><img class="return" src="public/images/return.png" alt=""></a>
  <div class="galery">
      <div class="img_left">
          <img class="urbex" src="public/images/urbex/urbex_factory.jpg" alt="">
