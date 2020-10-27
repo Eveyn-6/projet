@@ -12,7 +12,6 @@ function user()
 function pictures()
 {
     $connexion = getUser();
-
 }
 function albums()
 {
@@ -21,37 +20,37 @@ function albums()
 
 function home()
 {
-   
+
     require_once('view/homeView.php');
 }
 function album()
 {
-   
+
     require_once('view/albumView.php');
 }
 function urbex()
 {
-   
+
     require_once('view/urbexView.php');
-    $title =" Urbex| Urbex";
+    $title = " Urbex| Urbex";
 }
 function cars()
 {
-   
+
     require_once('view/carsView.php');
-    $title =" Cars| Auto";
+    $title = " Cars| Auto";
 }
 function nature()
 {
-   
+
     require_once('view/natureView.php');
-    $title =" Nature| Nature";
+    $title = " Nature| Nature";
 }
 function adminController()
-{ 
-     
-   
-    if(!isUserConnected()){
+{
+
+
+    if (!isUserConnected()) {
         // Si non connecté, redirection
         header("Location:index.php?action=connexion");
         die();
@@ -61,12 +60,13 @@ function adminController()
 
 }
 
-function connexionController(){
+function connexionController()
+{
     $message = "Remplissez les champs:";
     $title = "Page de connexion | Connexion";
+    $erreurs = [];
 
-     
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($_SERVER["REQUEST_METHOD"] === "POST" and isset($_POST['pseudo'])) {
             $pseudo = ($_POST['pseudo']);
@@ -77,9 +77,10 @@ function connexionController(){
             ));
             $connexion = $insert->fetch();
             $password_connect = password_verify($_POST['password'], $connexion['password']);
-        
+
             if (!$connexion) {
-                echo '';
+
+                $erreurs[] = 'Identifiants ou MDP incorrect ! ';
             } else {
                 if ($password_connect) {
                     session_start();
@@ -87,98 +88,92 @@ function connexionController(){
                     $_SESSION['pseudo'] = $pseudo;
                     header("Location: index.php?action=profil");
                 } else {
-                    echo 'Identifiants ou MDP incorrect !';
+                    $erreurs[] = 'Identifiants ou MDP incorrect ! ';
                 }
             }
         }
-    
+        else {
+                    $erreurs[] = 'Identifiants ou MDP incorrect ! ';
+                }
     }
 
- 
+
     require_once("view/connexionView.php");
 }
 
-function inscriptionController(){
+function inscriptionController()
+{
     $message = "Remplissez les champs:";
     $title = "Page d'inscription' | inscription";
+    $erreur = [];
 
-    if($_SERVER["REQUEST_METHOD"] == "POST"){
-        $bdd = dbconnect();  
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $bdd = dbconnect();
         if (isset($_POST['inscriptionView'])) {
-            if (!empty($_POST['pseudo']) and !empty($_POST['email']) and !empty($_POST['password'] and !empty($_POST['password2']))) {
+            if (!empty($_POST['pseudo']) and !empty($_POST['email'])  and !empty($_POST['password'] and !empty($_POST['password2']))) {
                 $pseudo = htmlspecialchars($_POST['pseudo']);
                 $email = htmlspecialchars($_POST['email']);
-                if(filter_var($email, FILTER_VALIDATE_EMAIL))
-                {
-                 
-                }
-                else
-                {
-                    $erreur = "L'Email saisie n'est pas correcte";
+                if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                } else {
+                    $erreurs[] = "L'Email saisie n'est pas valide choissisez-en un autre ";
                 }
                 $insert = $bdd->prepare('SELECT * FROM user WHERE  pseudo = :pseudo');
                 $insert->execute(array(
                     'pseudo' => $pseudo,
                 ));
                 $resultat = $insert->fetch();
-                if($resultat == false)
-                {       
-                if ($_POST['password'] == $_POST['password2']) {
-                    $password =  password_hash($_POST['password'], PASSWORD_DEFAULT);
-                    $insert = $bdd->prepare('INSERT INTO `user`(`pseudo`, `email`, `password`, `date`) VALUES (:pseudo,:email,:password, CURRENT_DATE())');
-        
-                    $insert->execute(array(
-                        'pseudo' => $pseudo,
-                        'password' => $password,
-                        'email' => $email,
-                    ));
-                    header("Location:index.php?action=connexion");
+                if ($resultat == false) {
+                    if ($_POST['password'] == $_POST['password2']) {
+                        $password =  password_hash($_POST['password'], PASSWORD_DEFAULT);
+                        $insert = $bdd->prepare('INSERT INTO `user`(`pseudo`, `email`, `password`, `date`) VALUES (:pseudo,:email, :password, CURRENT_DATE())');
+
+                        $insert->execute(array(
+                            'pseudo' => $pseudo,
+                            'password' => $password,
+                            'email' => $email,
+                            
+
+                        ));
+                        header("Location:index.php?action=connexion");
+                    } else {
+                        $erreurs[] = "vos mots de passe ne sont pas identiques";
+                    }
                 } else {
-                    $erreur = "vos mots de passe ne sont pas identiques";
-                }  
-            }
-            else{
-                $erreur = "Pseudo déjà utilisé choissisez-en un autre";
-                
-            }
-        
+                    $erreurs[] = "Pseudo déjà utilisé choissisez-en un autre";
+                }
             } else {
-              
+                $erreurs[] = "E-mail déjà utilisée choissisez-en une autre";
             }
         }
-       
-    } 
+    }
     require_once("view/inscriptionView.php");
 }
- function profilController(){
+function profilController()
+{
     $message = "";
     $title = "profil' | profil";
-    $userinfo =[];
-     
+    $userinfo = [];
+
     $bdd = new PDO('mysql:host=localhost;dbname=pictures', 'root', '');
-    if(isset($_SESSION) && isset($_SESSION['id']))
-    {
+    if (isset($_SESSION) && isset($_SESSION['id'])) {
         $getid = intval($_SESSION['id']);
-        $requser = $bdd -> prepare('SELECT * FROM user WHERE id = ?') ;
-        $requser -> execute(array($getid));
+        $requser = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+        $requser->execute(array($getid));
         $userinfo = $requser->fetch();
-     
-    
- }
- else{
-    header("Location:index.php?action=connexion");
-    die();
-}
+    } else {
+        header("Location:index.php?action=connexion");
+        die();
+    }
     require_once("view/profilView.php");
 }
 
 
-function deconnexion(){
-session_start();
-session_unset();
-session_destroy();
-header('Location: index.php');
-exit();
-require_once("view/profilView.php");
- 
+function deconnexion()
+{
+    session_start();
+    session_unset();
+    session_destroy();
+    header('Location: index.php');
+    exit();
+    require_once("view/profilView.php");
 }

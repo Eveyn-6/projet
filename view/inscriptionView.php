@@ -4,6 +4,10 @@
 <div class="alert ">
     <?= $message; ?>
 </div>
+<div class="alert ">
+    <?php foreach( $erreurs as $value )
+     echo $value . '<br />'; ?>
+</div>
 <div class="inscriptionView">
     <form method="POST">
         <div class="input_group">

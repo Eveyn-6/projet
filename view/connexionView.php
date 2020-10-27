@@ -2,8 +2,10 @@
 
 <h3>Connexion</h3>
 <div class="alert">
-    <?= $message; ?>
+<?php foreach( $erreurs as $value )
+     echo $value . '<br />'; ?>
 </div>
+ 
 <div class="connexionView">
     <form method="post">
 
