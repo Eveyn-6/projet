@@ -8,7 +8,8 @@
 <label class="welcome">Bienvenue: <?php echo $userinfo['pseudo']; ?></label></br>
 <div class="user_profil"><span>Pseudo: </span><?php echo $userinfo['pseudo']?></div>
 <div class="user_profil"><span>Adresse e-mail: </span><?php echo $userinfo['email']?></div></br>
- <div class="deconnexion"><span>Déconnexion</span><a href="index.php?action=deconnexion"><img class="deco" src="public/images/deco.jpg" alt=""></a></div>
+<div class="Edit"><span>Editer le profil:</span><a href="index.php?action=editprofil"><img class="deco" src="public/images/pencil.png" alt=""></a></div>
+<div class="deconnexion"><span>Déconnexion:</span><a href="index.php?action=deconnexion"><img class="deco" src="public/images/deco.jpg" alt=""></a></div>
 <?php
 $content = ob_get_clean();
 require_once("view/templates.php");

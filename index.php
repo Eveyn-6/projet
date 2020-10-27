@@ -40,7 +40,10 @@ switch($action){
     case "profil":
        profilController();
     break;
-     
+
+    case "editprofil":
+        editprofilController();
+    break;
     case "deconnexion":
         deconnexion();
      break;

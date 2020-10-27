@@ -51,13 +51,13 @@ function adminController()
 
 
     if (!isUserConnected()) {
-        // Si non connecté, redirection
+        
         header("Location:index.php?action=connexion");
         die();
     }
 
-    // Si connecté...
-
+     echo 'texte';
+ 
 }
 
 function connexionController()
@@ -154,7 +154,7 @@ function profilController()
     $title = "profil' | profil";
     $userinfo = [];
 
-    $bdd = new PDO('mysql:host=localhost;dbname=pictures', 'root', '');
+    $bdd =dbConnect();
     if (isset($_SESSION) && isset($_SESSION['id'])) {
         $getid = intval($_SESSION['id']);
         $requser = $bdd->prepare('SELECT * FROM user WHERE id = ?');
@@ -167,6 +167,28 @@ function profilController()
     require_once("view/profilView.php");
 }
 
+
+function editprofilController()
+{
+    $message = "";
+    $title = "Edition du profil' | Edition duprofil";
+    $userinfo = [];
+
+    $bdd =dbConnect();
+    if (isset($_SESSION) && isset($_SESSION['id'])) {
+        $getid = intval($_SESSION['id']);
+        $requser = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+        $requser->execute(array($getid));
+        $userinfo = $requser->fetch();
+        if (!isUserConnected()) {
+         
+        }
+    } else {
+        header("Location:index.php?action=connexion");
+        die();
+    }
+    require_once("view/editView.php");
+}
 
 function deconnexion()
 {
