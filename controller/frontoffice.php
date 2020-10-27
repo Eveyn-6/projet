@@ -105,7 +105,7 @@ function inscriptionController()
 {
     $message = "Remplissez les champs:";
     $title = "Page d'inscription' | inscription";
-    $erreur = [];
+    $erreurs = [];
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $bdd = dbconnect();

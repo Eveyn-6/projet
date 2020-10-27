@@ -27,13 +27,11 @@
     box-shadow: 2px 2px 2px 0px #0b7feb3f, 14px 15px 12px 0px#05ebcc42;
 }
 
-.return {
+.returns {
     width: 100%;
-    min-width: 40px;
-    max-width: 40px;
-    margin-top: 20px;
-    border-radius: 50px;
-    box-shadow: 2px 2px 2px 0px #eb0b833f, 14px 15px 12px 0px#5d05eb42;
+    min-width: 70px;
+    max-width: 70px;
+    margin-top: 40px;
 }
 
 .deco {

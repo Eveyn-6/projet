@@ -1,5 +1,5 @@
 <?php ob_start(); ?>
-<a href="index.php?action=home"><img class="return" src="public/images/return.png" alt=""></a>
+<a href="index.php?action=home"><img class="returns" src="public/images/returns.png" alt=""></a>
 <h3>Profil</h3>
 <div class="alert">
     <?= $message; ?>
