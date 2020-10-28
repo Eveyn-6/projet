@@ -46,19 +46,6 @@ function nature()
     require_once('view/natureView.php');
     $title = " Nature| Nature";
 }
-function adminController()
-{
-
-
-    if (!isUserConnected()) {
-        
-        header("Location:index.php?action=connexion");
-        die();
-    }
-
-     echo 'texte';
- 
-}
 
 function connexionController()
 {
@@ -76,6 +63,7 @@ function connexionController()
                 'pseudo' => $pseudo
             ));
             $connexion = $insert->fetch();
+            $insert -> closeCursor();
             $password_connect = password_verify($_POST['password'], $connexion['password']);
 
             if (!$connexion) {

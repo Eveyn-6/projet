@@ -1,6 +1,7 @@
 <?php
 
 require_once("controller/frontoffice.php");
+require_once("controller/adminController.php");
 session_start();
 $action = "home";
 if(isset($_GET["action"])){
@@ -29,6 +30,12 @@ switch($action){
     case "admin":
         adminController();
     break;
+    case "userManagement":
+        userManagement();
+    break;
+    case "adminHome":
+        adminHome();
+    break;
     case "connexion":
         connexionController();
     break;
@@ -44,6 +51,7 @@ switch($action){
     case "editprofil":
         editprofilController();
     break;
+    
     case "deconnexion":
         deconnexion();
      break;

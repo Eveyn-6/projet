@@ -53,7 +53,7 @@
          
       </ul>
  </header>
-        <?php echo $content ?>
+        <?= $content ?>
         </div>
         </div>
      <div class="footer">

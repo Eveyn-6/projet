@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 
+<a href="index.php?action=profil"><img class="returns" src="public/images/returns.png" alt=""></a>
 <h3>Editer votre profil</h3>
- 
  
 <div class="editView">
     <form method="post">
@@ -24,5 +24,6 @@
     </form>
 </div>
 <?php
+
 $content = ob_get_clean();
 require_once("view/templates.php");
