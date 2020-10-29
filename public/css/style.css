@@ -1,7 +1,8 @@
 @import "_layout.css";
-@import "_layout_formulaire.css";
+@import "_layout_formulaires.css";
 @import "_layout_cards.css";
 @import "_layout_carouselHome.css";
+@import "_layout_Management.css";
 @import "_layout_img.css";
 .nav {
     margin-top: 50px;

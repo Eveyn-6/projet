@@ -1,0 +1,15 @@
+    .contentDelete {
+        display: flex;
+        margin-top: 40px;
+        font-weight: bold;
+        text-decoration: underline chocolate;
+    }
+    
+    .delete {
+        margin-right: 80px;
+    }
+    
+    #manage {
+        margin-left: 20px;
+        margin-right: 10px;
+    }

@@ -5,11 +5,11 @@
     <?= $message; ?>
 </div>
 <div class="alert ">
-    <?php foreach( $erreurs as $value )
-     echo $value . '<br />'; ?>
+    <?php foreach( $errors as $values )
+     echo $values . '<br />'; ?>
 </div>
 <div class="inscriptionView">
-    <form method="POST">
+    <form id="formInscription" method="POST">
         <div class="input_group">
             <label>Pseudo:</label>
             <input type="text" placeholder="Pseudo" name="pseudo">

@@ -36,6 +36,9 @@ switch($action){
     case "adminHome":
         adminHome();
     break;
+    case "delete":
+       deleteUser();
+    break;
     case "connexion":
         connexionController();
     break;

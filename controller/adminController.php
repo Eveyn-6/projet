@@ -1,7 +1,8 @@
 <?php
 function adminHome()
 { 
-    
+    $bdd = dbConnect();
+    require_once('view/admin/adminHome.php');  
 }
 function userManagement()
 {
@@ -9,7 +10,7 @@ function userManagement()
     $req = $bdd -> query('SELECT * FROM user') ;
     $membres= $req->fetchAll();
     $req -> closeCursor(); 
-    
+    require_once('view/admin/userManagement.php');  
 }
 function adminController()
 
@@ -32,14 +33,14 @@ function adminController()
 
 function deleteUser()
 {
+    $id = ($_POST['id']);
     $bdd = dbConnect();
     $req = $bdd -> prepare('DELETE FROM user WHERE id= :id') ;
      $req->execute(array(
-         'id'=> $id 
+        'id'=> $id 
      ));
     $req -> closeCursor(); 
-    session_start();
-    session_unset();
-    session_destroy();
+    header("Location:index.php?action=userManagement");
     require_once('view/admin/userManagement.php');
-}
+     }
+

@@ -7,7 +7,7 @@
 </div>
  
 <div class="connexionView">
-    <form method="post">
+    <form id="formConnexion" method="post">
 
         <div class="input_group">
             <label>Pseudo:</label> 

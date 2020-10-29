@@ -63,7 +63,7 @@ function connexionController()
                 'pseudo' => $pseudo
             ));
             $connexion = $insert->fetch();
-            $insert -> closeCursor();
+            $insert->closeCursor();
             $password_connect = password_verify($_POST['password'], $connexion['password']);
 
             if (!$connexion) {
@@ -79,10 +79,9 @@ function connexionController()
                     $erreurs[] = 'Identifiants ou MDP incorrect ! ';
                 }
             }
+        } else {
+            $erreurs[] = 'Identifiants ou MDP incorrect ! ';
         }
-        else {
-                    $erreurs[] = 'Identifiants ou MDP incorrect ! ';
-                }
     }
 
 
@@ -93,56 +92,66 @@ function inscriptionController()
 {
     $message = "Remplissez les champs:";
     $title = "Page d'inscription' | inscription";
-    $erreurs = [];
+    $errors = [];
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['inscriptionView'])) {
+
+        // Tous champs remplis ?
+        if (empty($_POST['pseudo']) or empty($_POST['email']) or empty($_POST['password']) or empty($_POST['password2'])) {
+            $errors[] = "Veuillez remplir tous les champs demandés";
+        }
+
+        $pseudo = htmlspecialchars($_POST['pseudo']);
+        $email = htmlspecialchars($_POST['email']);
+
+        // Mail valide ?
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "L'Email saisie n'est pas valide choissisez-en un autre ";
+        }
+
         $bdd = dbconnect();
-        if (isset($_POST['inscriptionView'])) {
-            if (!empty($_POST['pseudo']) and !empty($_POST['email'])  and !empty($_POST['password'] and !empty($_POST['password2']))) {
-                $pseudo = htmlspecialchars($_POST['pseudo']);
-                $email = htmlspecialchars($_POST['email']);
-                if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                } else {
-                    $erreurs[] = "L'Email saisie n'est pas valide choissisez-en un autre ";
-                }
-                $insert = $bdd->prepare('SELECT * FROM user WHERE  pseudo = :pseudo');
-                $insert->execute(array(
-                    'pseudo' => $pseudo,
-                ));
-                $resultat = $insert->fetch();
-                if ($resultat == false) {
-                    if ($_POST['password'] == $_POST['password2']) {
-                        $password =  password_hash($_POST['password'], PASSWORD_DEFAULT);
-                        $insert = $bdd->prepare('INSERT INTO `user`(`pseudo`, `email`, `password`, `date`) VALUES (:pseudo,:email, :password, CURRENT_DATE())');
+        // Pseudo existe ?
+        $insert = $bdd->prepare('SELECT * FROM user WHERE  pseudo = :pseudo');
+        $insert->execute(array(
+            'pseudo' => $pseudo
+        ));
+        $resultat = $insert->fetch();
+        if ($resultat != false) {
+            $errors[] = "Pseudo déjà utilisé choissisez-en un autre";
+        }
 
-                        $insert->execute(array(
-                            'pseudo' => $pseudo,
-                            'password' => $password,
-                            'email' => $email,
-                            
+        // Mail existe ?
 
-                        ));
-                        header("Location:index.php?action=connexion");
-                    } else {
-                        $erreurs[] = "vos mots de passe ne sont pas identiques";
-                    }
-                } else {
-                    $erreurs[] = "Pseudo déjà utilisé choissisez-en un autre";
-                }
-            } else {
-                $erreurs[] = "E-mail déjà utilisée choissisez-en une autre";
-            }
+        // Memes mots de passe
+        if ($_POST['password'] != $_POST['password2']) {
+            $errors[] = "vos mots de passe ne sont pas identiques";
+        }
+
+        // Si tout est bon = si pas d'erreurs...
+        if (count($errors) == 0) {
+            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $insert = $bdd->prepare('INSERT INTO `user`(`pseudo`, `email`, `password`,`date`) VALUES (:pseudo,:email, :password, CURRENT_DATE())');
+
+            $insert->execute(array(
+                'pseudo' => $pseudo,
+                'password' => $password,
+                'email' => $email
+
+            ));
         }
     }
+
+
     require_once("view/inscriptionView.php");
 }
+
 function profilController()
 {
     $message = "";
     $title = "profil' | profil";
     $userinfo = [];
 
-    $bdd =dbConnect();
+    $bdd = dbConnect();
     if (isset($_SESSION) && isset($_SESSION['id'])) {
         $getid = intval($_SESSION['id']);
         $requser = $bdd->prepare('SELECT * FROM user WHERE id = ?');
@@ -158,26 +167,29 @@ function profilController()
 
 function editprofilController()
 {
-    $message = "";
-    $title = "Edition du profil' | Edition duprofil";
-    $userinfo = [];
+    $message = "Veuillez remplir les champs:";
+    $title = "Edition du profil' | Edition du profil";
 
-    $bdd =dbConnect();
+    if (!isUserConnected()) {
+
+        header("Location:index.php?action=connexion");
+        die();
+    }
+    $bdd = dbConnect();
     if (isset($_SESSION) && isset($_SESSION['id'])) {
         $getid = intval($_SESSION['id']);
         $requser = $bdd->prepare('SELECT * FROM user WHERE id = ?');
         $requser->execute(array($getid));
-        $userinfo = $requser->fetch();
-        if (!isUserConnected()) {
-         
+        $id= $requser->fetch();
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            $requser = $bdd->prepare('UPDATE * FROM user WHERE id = ?');
+            $requser->execute(array(
+                'id' => $id 
+            ));
         }
-    } else {
-        header("Location:index.php?action=connexion");
-        die();
+        require_once("view/editView.php");
     }
-    require_once("view/editView.php");
 }
-
 function deconnexion()
 {
     session_start();

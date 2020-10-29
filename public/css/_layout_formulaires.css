@@ -1,0 +1,10 @@
+ #formConnexion,
+ #formInscription,
+ #formEditProfil {
+     background-color: rgba(32, 32, 32, 0.191);
+     width: 100%;
+     min-width: 100px;
+     max-width: 500px;
+     border: solid;
+     margin: auto;
+ }

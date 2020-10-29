@@ -4,7 +4,7 @@
 <h3>Editer votre profil</h3>
  
 <div class="editView">
-    <form method="post">
+    <form id="formEditProfil" method="post">
 
         <div class="input_group">
             <label>Pseudo:</label> 
@@ -12,7 +12,7 @@
         </div>
         <div class="input_group">
             <label>E-mail:</label>
-            <input type="password" placeholder="Mot de passe" name="email">
+            <input type="text" placeholder="E-mail" name="email">
         </div>
         <div class="input_group">
             <label>Mot de passe:</label>
