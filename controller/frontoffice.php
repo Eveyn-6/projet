@@ -95,22 +95,17 @@ function inscriptionController()
     $errors = [];
 
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['inscriptionView'])) {
-
-        // Tous champs remplis ?
         if (empty($_POST['pseudo']) or empty($_POST['email']) or empty($_POST['password']) or empty($_POST['password2'])) {
             $errors[] = "Veuillez remplir tous les champs demandés";
         }
 
         $pseudo = htmlspecialchars($_POST['pseudo']);
         $email = htmlspecialchars($_POST['email']);
-
-        // Mail valide ?
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = "L'Email saisie n'est pas valide choissisez-en un autre ";
         }
 
         $bdd = dbconnect();
-        // Pseudo existe ?
         $insert = $bdd->prepare('SELECT * FROM user WHERE  pseudo = :pseudo');
         $insert->execute(array(
             'pseudo' => $pseudo
@@ -120,24 +115,19 @@ function inscriptionController()
             $errors[] = "Pseudo déjà utilisé choissisez-en un autre";
         }
 
-        // Mail existe ?
-
-        // Memes mots de passe
         if ($_POST['password'] != $_POST['password2']) {
-            $errors[] = "vos mots de passe ne sont pas identiques";
-        }
 
-        // Si tout est bon = si pas d'erreurs...
         if (count($errors) == 0) {
             $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
             $insert = $bdd->prepare('INSERT INTO `user`(`pseudo`, `email`, `password`,`date`) VALUES (:pseudo,:email, :password, CURRENT_DATE())');
-
             $insert->execute(array(
                 'pseudo' => $pseudo,
                 'password' => $password,
                 'email' => $email
 
             ));
+        
+              header("Location:index.php?action=profil");
         }
     }
 
@@ -184,13 +174,14 @@ function editprofilController()
         $requser->execute(array($getid));
         $user= $requser->fetch();
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $requser = $bdd->prepare('UPDATE `user` SET `pseudo`= :pseudo,`email`= :email,`password`= :password WHERE id= id');
+            $requser = $bdd->prepare('UPDATE `user` SET `pseudo`= :pseudo,`email`= :email,`password`= :password WHERE id= :id');
             $requser->execute(array(
                 'id' => $user['ID'], 
                 'pseudo' => $user['pseudo'], 
                 'email' => $user['email'], 
                 'password' => $user['password'], 
             ));
+            header("Location:index.php?action=profil");
         }
         require_once("view/editView.php");
     }
