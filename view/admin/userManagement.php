@@ -5,7 +5,7 @@
      <div class="delete"> 
      <form action="index.php?action=delete" method='POST'>
           <input type="hidden" name="id" value="<?= $value['ID'] ?>"/>
-          <button  id="manage" type="submit" name="delete">Editer</button>
+           
           <button id="manage" type="submit" name="delete">Suppr </button>
           
      </form>

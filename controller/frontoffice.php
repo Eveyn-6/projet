@@ -175,21 +175,28 @@ function editprofilController()
         header("Location:index.php?action=connexion");
         die();
     }
+
+
     $bdd = dbConnect();
     if (isset($_SESSION) && isset($_SESSION['id'])) {
         $getid = intval($_SESSION['id']);
         $requser = $bdd->prepare('SELECT * FROM user WHERE id = ?');
         $requser->execute(array($getid));
-        $id= $requser->fetch();
+        $user= $requser->fetch();
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $requser = $bdd->prepare('UPDATE * FROM user WHERE id = ?');
+            $requser = $bdd->prepare('UPDATE `user` SET `pseudo`= :pseudo,`email`= :email,`password`= :password WHERE id= id');
             $requser->execute(array(
-                'id' => $id 
+                'id' => $user['ID'], 
+                'pseudo' => $user['pseudo'], 
+                'email' => $user['email'], 
+                'password' => $user['password'], 
             ));
         }
         require_once("view/editView.php");
     }
 }
+
+
 function deconnexion()
 {
     session_start();
@@ -198,4 +205,22 @@ function deconnexion()
     header('Location: index.php');
     exit();
     require_once("view/profilView.php");
+}
+
+
+function deleteUserCount()
+{
+    $id = ($_SESSION['id']);
+    $bdd = dbConnect();
+    $req = $bdd -> prepare('DELETE FROM user WHERE id= :id') ;
+     $req->execute(array(
+        'id'=> $id 
+     ));
+    $req -> closeCursor(); 
+    session_start();
+    session_unset(); 
+    session_destroy();
+    header('Location: index.php');
+    exit();
+
 }

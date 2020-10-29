@@ -38,7 +38,12 @@ switch($action){
     break;
     case "delete":
        deleteUser();
-    break;
+    break; 
+    
+    case "deleteUserCount":
+        deleteUserCount();
+     break;
+
     case "connexion":
         connexionController();
     break;
