@@ -137,7 +137,7 @@ function inscriptionController()
 
 function profilController()
 {
-    $message = "";
+    $message = "Bienvenue";
     $title = "profil' | profil";
     $userinfo = [];
 
@@ -165,7 +165,7 @@ function editprofilController()
         header("Location:index.php?action=connexion");
         die();
     }
-
+}
 
     $bdd = dbConnect();
     if (isset($_SESSION) && isset($_SESSION['id'])) {
