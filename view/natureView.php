@@ -6,9 +6,9 @@
         <img class="nature" src="public/images/nature/foret.jpg" alt="">
         <img class="nature"src="public/images/nature/ciel.jpg" alt="">
         <img class="nature"src="public/images/nature/loire.jpg" alt="">
-        <img class="nature"src="public/images/nature/.jpg" alt="">
-        <img class="nature"src="public/images/nature/.jpg" alt="">
-        <img class="nature"src="public/images/nature/.jpg" alt="">
+        <img class="nature"src="public/images/nature/pays5.jpg" alt="">
+        <img class="nature"src="public/images/nature/flower.jpg" alt="">
+        <img class="nature"src="public/images/nature/terasse.jpg" alt="">
 
     </div>
 </div>

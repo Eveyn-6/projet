@@ -150,10 +150,12 @@ function profilController()
     } else {
         header("Location:index.php?action=connexion");
         die();
-    }
+    } 
+} 
+    
     require_once("view/profilView.php");
-}
 
+}
 
 function editprofilController()
 {
@@ -185,7 +187,7 @@ function editprofilController()
         }
         require_once("view/editView.php");
     }
-}
+ 
 
 
 function deconnexion()
@@ -215,3 +217,5 @@ function deleteUserCount()
     exit();
 
 }
+
+ 
