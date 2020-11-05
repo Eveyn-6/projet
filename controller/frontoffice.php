@@ -117,77 +117,80 @@ function inscriptionController()
 
         if ($_POST['password'] != $_POST['password2']) {
 
-        if (count($errors) == 0) {
-            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-            $insert = $bdd->prepare('INSERT INTO `user`(`pseudo`, `email`, `password`,`date`) VALUES (:pseudo,:email, :password, CURRENT_DATE())');
-            $insert->execute(array(
-                'pseudo' => $pseudo,
-                'password' => $password,
-                'email' => $email
+            if (count($errors) == 0) {
+                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                $insert = $bdd->prepare('INSERT INTO `user`(`pseudo`, `email`, `password`,`date`) VALUES (:pseudo,:email, :password, CURRENT_DATE())');
+                $insert->execute(array(
+                    'pseudo' => $pseudo,
+                    'password' => $password,
+                    'email' => $email
 
-            ));
-        
-              header("Location:index.php?action=profil");
+                ));
+
+
+                header("Location:index.php?action=profil");
+            }
         }
-    }
+   
 
 
     require_once("view/inscriptionView.php");
-}
 
-function profilController()
-{
-    $message = "Bienvenue";
-    $title = "profil' | profil";
-    $userinfo = [];
+ }
+    function profilController()
+    {
+        $message = "Bienvenue";
+        $title = "profil' | profil";
+        $userinfo = [];
 
-    $bdd = dbConnect();
-    if (isset($_SESSION) && isset($_SESSION['id'])) {
-        $getid = intval($_SESSION['id']);
-        $requser = $bdd->prepare('SELECT * FROM user WHERE id = ?');
-        $requser->execute(array($getid));
-        $userinfo = $requser->fetch();
-    } else {
-        header("Location:index.php?action=connexion");
-        die();
-    } 
-} 
-    
-    require_once("view/profilView.php");
-
-}
-
-function editprofilController()
-{
-    $message = "Veuillez remplir les champs:";
-    $title = "Edition du profil' | Edition du profil";
-
-    if (!isUserConnected()) {
-
-        header("Location:index.php?action=connexion");
-        die();
-    }
-}
-
-    $bdd = dbConnect();
-    if (isset($_SESSION) && isset($_SESSION['id'])) {
-        $getid = intval($_SESSION['id']);
-        $requser = $bdd->prepare('SELECT * FROM user WHERE id = ?');
-        $requser->execute(array($getid));
-        $user= $requser->fetch();
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $requser = $bdd->prepare('UPDATE `user` SET `pseudo`= :pseudo,`email`= :email,`password`= :password WHERE id= :id');
-            $requser->execute(array(
-                'id' => $user['ID'], 
-                'pseudo' => $user['pseudo'], 
-                'email' => $user['email'], 
-                'password' => $user['password'], 
-            ));
-            header("Location:index.php?action=profil");
+        $bdd = dbConnect();
+        if (isset($_SESSION) && isset($_SESSION['id'])) {
+            $getid = intval($_SESSION['id']);
+            $requser = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+            $requser->execute(array($getid));
+            $userinfo = $requser->fetch();
+        } else {
+            header("Location:index.php?action=connexion");
+            die();
+            require_once("view/profilView.php");
         }
-        require_once("view/editView.php");
     }
- 
+
+
+
+
+
+    function editprofilController()
+    {
+        $message = "Veuillez remplir les champs:";
+        $title = "Edition du profil' | Edition du profil";
+
+        if (!isUserConnected()) {
+
+            header("Location:index.php?action=connexion");
+            die();
+        }
+    }
+
+    $bdd = dbConnect();
+    if (isset($_SESSION) && isset($_SESSION['id']))
+        $getid = intval($_SESSION['id']);
+    $requser = $bdd->prepare('SELECT * FROM user WHERE id = ?');
+    $requser->execute(array($getid));
+    $user = $requser->fetch();
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $requser = $bdd->prepare('UPDATE `user` SET `pseudo`= :pseudo,`email`= :email,`password`= :password WHERE id= :id');
+        $requser->execute(array(
+            'id' => $user['ID'],
+            'pseudo' => $user['pseudo'],
+            'email' => $user['email'],
+            'password' => $user['password'],
+        ));
+        header("Location:index.php?action=profil");
+    }
+    require_once("view/editView.php");
+}
+
 
 
 function deconnexion()
@@ -205,17 +208,14 @@ function deleteUserCount()
 {
     $id = ($_SESSION['id']);
     $bdd = dbConnect();
-    $req = $bdd -> prepare('DELETE FROM user WHERE id= :id') ;
-     $req->execute(array(
-        'id'=> $id 
-     ));
-    $req -> closeCursor(); 
+    $req = $bdd->prepare('DELETE FROM user WHERE id= :id');
+    $req->execute(array(
+        'id' => $id
+    ));
+    $req->closeCursor();
     session_start();
-    session_unset(); 
+    session_unset();
     session_destroy();
     header('Location: index.php');
     exit();
-
 }
-
- 
