@@ -16,7 +16,7 @@
         </div>
         <div class="input_group">
             <label>Mot de passe:</label>
-            <input type="password" placeholder="Mot de passe" value="<?php echo $user['password'] ?> name=" password">
+            <input type="password" placeholder="Mot de passe" value="<?php echo $user['password'] ?> "name= "password">
         </div>
         <div class="input_group">
             <div class="btn"><button type="submit">Envoyer</button></div>
