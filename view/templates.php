@@ -33,14 +33,17 @@
 
           <?php
           if (isUserConnected()) {
+            if (isUserAdmin()){
           ?>
             <li class="nav-item">
               <a class="nav-link" href="index.php?action=admin">
                 <div id="navbar">Espace admin</div>
               </a>
-            </li>
-
-
+            </li> 
+            <?php
+          }
+         
+          ?>
             <li class="nav-item">
               <a class="nav-link" href="index.php?action=deconnexion">
                 <div id="color">Déconnexion</div>
