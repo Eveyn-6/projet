@@ -7,10 +7,8 @@ function adminHome()
 
 function userManagement()
 {
-    $bdd = dbConnect();
-    $req = $bdd -> query('SELECT * FROM user') ;
-    $membres= $req->fetchAll();
-    $req -> closeCursor(); 
+    $userManager = new UserManager(); 
+
     require_once('view/admin/userManagement.php');  
 }
 

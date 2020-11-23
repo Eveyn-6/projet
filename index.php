@@ -41,7 +41,7 @@ switch($action){
     break; 
     
     case "deleteUserCount":
-        deleteUserCount();
+        getUserDelete();
      break;
 
     case "connexion":

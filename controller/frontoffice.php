@@ -1,22 +1,23 @@
 <?php
 require_once('model/db.php');
 require_once('model/helpers.php');
+require_once('model/userManager.php');
 
 function user()
 {
-    $connexion = getUser();
+    $userManager = new UserManager();
 
     require_once('view/frontend/listPostsView.php');
 }
 
-function pictures()
-{
-    $connexion = getUser();
-}
-function albums()
-{
-    $connexion = getUser();
-}
+// function pictures()
+// {
+//     $connexion = getUsers();
+// }
+// function albums()
+// {
+//     $connexion = getUsers();
+// }
 
 function home()
 {
@@ -50,8 +51,6 @@ function nature()
     $title = " Nature| Nature";
 }
 
-
-
 function connexionController()
 {
     $message = "Remplissez les champs:";
@@ -62,13 +61,11 @@ function connexionController()
 
         if ($_SERVER["REQUEST_METHOD"] === "POST" and isset($_POST['pseudo'])) {
             $pseudo = ($_POST['pseudo']);
-            $bdd = dbConnect();
-            $insert = $bdd->prepare('SELECT id, password FROM user WHERE pseudo = :pseudo');
-            $insert->execute(array(
-                'pseudo' => $pseudo
-            ));
-            $connexion = $insert->fetch();
-            $insert->closeCursor();
+
+            $userManager = new UserManager();
+            $connexion = $userManager->getUserFromUsername($pseudo);
+
+
             $password_connect = password_verify($_POST['password'], $connexion['password']);
 
             if (!$connexion) {
@@ -93,7 +90,7 @@ function inscriptionController()
     $message = "Remplissez les champs:";
     $title = "Page d'inscription' | inscription";
     $errors = [];
-
+    $userManager = new UserManager();
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['inscriptionView'])) {
 
         if (empty($_POST['pseudo']) or empty($_POST['email']) or empty($_POST['password']) or empty($_POST['password2'])) {
@@ -107,32 +104,23 @@ function inscriptionController()
             $errors[] = "L'Email saisie n'est pas valide choissisez-en un autre ";
         }
 
-        $bdd = dbconnect();
-        $insert = $bdd->prepare('SELECT * FROM user WHERE  pseudo = :pseudo');
-        $insert->execute(array(
-            'pseudo' => $pseudo
-        ));
-        $resultat = $insert->fetch();
-        if ($resultat != false) {
-            $errors[] = "Pseudo déjà utilisé choissisez-en un autre";
-        }
+        $existingUser = $userManager->getUserFromUsername($pseudo);
 
-        if ($_POST['password'] == $_POST['password2']) {
+        if ($existingUser != false) {
+            $errors[] = "Pseudo déjà utilisé choissisez-en un autre";
+        }else{
+            if ($_POST['password'] != $_POST['password2']) {
+                $errors[] = "blabla";
+            }
 
             if (count($errors) == 0) {
-                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                $insert = $bdd->prepare('INSERT INTO `user`(`pseudo`, `email`, `password`,`date`) VALUES (:pseudo,:email, :password, CURRENT_DATE())');
-                $insert->execute(array(
-                    'pseudo' => $pseudo,
-                    'password' => $password,
-                    'email' => $email
-
-                ));
+                $userManager->createUser($pseudo, $email, $_POST['password']);
 
                 header("Location:index.php?action=profil");
             }
         }
     }
+    
     require_once("view/inscriptionView.php");
 }
 
@@ -142,17 +130,15 @@ function profilController()
     $title = "profil' | profil";
     $userinfo = [];
 
-    $bdd = dbConnect();
-    if (isset($_SESSION) && isset($_SESSION['id'])) {
-        $getid = intval($_SESSION['id']);
-        $requser = $bdd->prepare('SELECT * FROM user WHERE id = ?');
-        $requser->execute(array($getid));
-        $userinfo = $requser->fetch();
+    $userManager = new UserManager();
+
+    if($userManager->isUserConnected()){
+        $profil = $userManager->getProfil();
+
     } else {
         header("Location:index.php?action=connexion");
         die();
     }
-
     require_once("view/profilView.php");
 }
 
@@ -167,29 +153,25 @@ function editprofilController()
         die();
     }
 
-    $bdd = dbConnect();
+    $userManager = new UserManager();
+    $editprofil = $userManager->getProfil();
+    $userId = $editprofil ['ID'];
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    if (isset($_SESSION) && isset($_SESSION['id'])) {
-        $getid = intval($_SESSION['id']);
-        $requser = $bdd->prepare('SELECT * FROM user WHERE id = ?');
-        $requser->execute(array($getid));
-        $user = $requser->fetch();
+        $userManager->updateUser($userId, array(
+            "pseudo" => $_POST['pseudo'],
+            'email' => $_POST['email'],
+            'password' => $_POST['password']     
+        ));
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $requser = $bdd->prepare('UPDATE `user` SET `pseudo`= :pseudo,`email`= :email,`password`= :password WHERE id= :id');
-            $requser->execute(array(
-                'id' => $user['ID'],
-                'pseudo' => $_POST['pseudo'],
-                'email' => $_POST['email'],
-                'password' => $_POST['password'],
-            ));
-            header("Location:index.php?action=profil");
-        }
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        header("Location:index.php?action=profil");
+
     }
     require_once("view/editView.php");
 }
 
-
+//isuserconnected 
 function deconnexion()
 {
     session_start();
@@ -201,15 +183,11 @@ function deconnexion()
 }
 
 
-function deleteUserCount()
-{
-    $id = ($_SESSION['id']);
-    $bdd = dbConnect();
-    $req = $bdd->prepare('DELETE FROM user WHERE id= :id');
-    $req->execute(array(
-        'id' => $id
-    ));
-    $req->closeCursor();
+ function getUserDelete()
+ {  
+
+  $userManager = new UserManager(); 
+
     session_start();
     session_unset();
     session_destroy();

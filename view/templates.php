@@ -25,25 +25,24 @@
               <div id="navbar">Albums</div>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?action=profil">
-              <div id="navbar">Profil</div>
-            </a>
-          </li>
-
           <?php
           if (isUserConnected()) {
-            if (isUserAdmin()){
+            if (isUserAdmin()) {
           ?>
-            <li class="nav-item">
-              <a class="nav-link" href="index.php?action=admin">
-                <div id="navbar">Espace admin</div>
-              </a>
-            </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="index.php?action=admin">
+                  <div id="navbar">Espace admin</div>
+                </a>
+              </li>
             <?php
-          }
-         
-          ?>
+            }
+
+            ?>
+            <li class="nav-item">
+              <a class="nav-link" href="index.php?action=profil">
+                <div id="navbar">Profil</div>
+              </a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="index.php?action=deconnexion">
                 <div id="color">Déconnexion</div>
