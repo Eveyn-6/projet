@@ -72,7 +72,6 @@ function connexionController()
             $password_connect = password_verify($_POST['password'], $connexion['password']);
 
             if (!$connexion) {
-
                 $erreurs[] = 'Identifiants ou MDP incorrect ! ';
             }
 
@@ -84,7 +83,6 @@ function connexionController()
             }
         }
     } else {
-        
     }
     require_once("view/connexionView.php");
 }
